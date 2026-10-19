@@ -2,6 +2,7 @@ package com.example.project2.demo.controller;
 
 import com.example.project2.demo.model.Rooms;
 import com.example.project2.demo.service.RoomsService;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,17 +16,14 @@ public class RoomsController {
         this.roomsService = roomsService;
     }
 
+    // Home page
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("rooms", roomsService.getAllRooms());
         return "index";
     }
 
-    @GetMapping("/signup")
-    public String signup() {
-        return "signup";
-    }
-
+    // Admin page
     @GetMapping("/admin")
     public String admin(Model model) {
         model.addAttribute("rooms", roomsService.getAllRooms());
@@ -33,6 +31,7 @@ public class RoomsController {
         return "admin";
     }
 
+    // Add room
     @PostMapping("/admin/add")
     public String addRoom(@ModelAttribute Rooms room) {
         room.setBooked(false);
@@ -40,15 +39,10 @@ public class RoomsController {
         return "redirect:/admin";
     }
 
+    // Delete room
     @PostMapping("/admin/delete/{id}")
     public String deleteRoom(@PathVariable Long id) {
         roomsService.deleteRoom(id);
         return "redirect:/admin";
-    }
-
-    @PostMapping("/book/{id}")
-    public String bookRoom(@PathVariable Long id) {
-        roomsService.bookRoom(id);
-        return "redirect:/";
     }
 }

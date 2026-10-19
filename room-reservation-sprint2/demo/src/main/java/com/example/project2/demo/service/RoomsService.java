@@ -1,6 +1,7 @@
 package com.example.project2.demo.service;
 
 import com.example.project2.demo.model.Rooms;
+import com.example.project2.demo.model.User;
 import com.example.project2.demo.data.RoomsRepository;
 import org.springframework.stereotype.Service;
 
@@ -39,9 +40,13 @@ public class RoomsService {
         roomsRepository.deleteById(id);
     }
 
-    public void bookRoom(Long id) {
+    public void bookRoom(Long id, User user) {
         Rooms room = roomsRepository.findById(id).orElseThrow();
+
         room.setBooked(true);
+        room.setBookedByName(user.getName());
+        room.setBookedByEmail(user.getEmail());
+
         roomsRepository.save(room);
     }
 }
