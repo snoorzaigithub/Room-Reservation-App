@@ -185,19 +185,6 @@ Stop the other application using port `8081`, or configure the demo application 
 
 Check the terminal logs, active Spring profile, database configuration, and whether any required dependent services are running.
 
-## Development
-
-Contributions and improvements are welcome. When making changes:
-
-1. Create a separate Git branch for your work.
-2. Test the affected module.
-3. Review your changes before committing.
-4. Submit a pull request with a description of the changes.
-
-## License
-
-No license has been specified yet. Add a license file if you intend to publish the project with explicit reuse permissions.
 
 ## Author
-
-Developed as a room reservation application project.
+Susan Noorzai
